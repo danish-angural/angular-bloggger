@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+<title>bloggger</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="header" style="background-image:url('background.webp '); background-repeat: no-repeat;background-size: cover;">
+
+  <h1>bloggger</h1>
+  <p>welcome {{username}}</p>
+</div>
+
+<div class="navbar">
+  <button href="" class="btn btn-primary btn-lg">Home</button>
+  <button #addPost type="button" class="btn btn-primary btn-lg" onclick="document.getElementById('modal').style.display='block'">add blog</button>
+  <button class="btn btn-primary btn-lg" href="">Logout</button>
+  <div class="dropdown">
+   <button class="btn btn-primary btn-lg">profile options
+     <i class="fa fa-caret-down"></i>
+   </button>
+ </div>
+</div>
+<div class="row">
+<div class="side">
+  <h2></h2>
+  <h5>Photo of me:</h5>
+  <img src="" alt="you" width="240px">
+  <p>joined on </p>
+  <h3>@ </h3>
+  <div class="fakeimg" style="height:60px;">
+    <a href=''></a>
+    <h6></h6>
+  </div>
+</div>
+
+<div class="main">
+  <h2 onclick= "getElementById('id07').style.display='block'"></h2>
+  <div id='id07' class="modal" style="width: 100%; float: middle">
+  <div class="modal-content">
+    <div style="background-color:inherit; float:middle" class="imgcontainer" >
+      <span onclick="document.getElementById('id07').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+  </div>
+</div>
+    <app-show-post></app-show-post>
+</div>
+
+
+</div>
+
+
+
+    <div class="modal" id='id02'>
+      <div class="imgcontainer">
+        <span onclick= "document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      <form class="modal-content animate" action='' method="POST">
+      <div class="container">
+        <label for="old_title"><b>copy old title here</b></label><br>
+        <input id="old_title" type="text" placeholder="Enter  old title" name="old_title" required> <br>
+        <label for="new_title"><b>enter new title</b></label><br>
+        <input id="new_title" type="text" placeholder="Enter  new title" name="new_title" required> <br>
+    
+        <label for="content"><b>content</b></label><br>
+        <textarea name="content" rows="10" cols="100">
+        </textarea>
+        <button type="submit" onclick="document.getElementById('id02').style.display='None'">edit</button><br>
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id02').style.display='None'" class="post_options">Cancel</button>
+        </div>
+      </div>
+    </form>
+    </div>
+    <div class="modal" id='id06'>
+      <form class="modal-content animate" action="delete_post" method="POST">
+        are you sure you want you delete?
+        <input id='checkbox' type=checkbox> <br>
+        <label for="blog_title"><b>copy title of blog here</b></label><br>
+      <input id='blog_title' type="text" name="blog_title"> <br>
+      <button type="button" onclick="document.getElementById('id03').style.display='None'" class="post_options">Cancel</button>
+      <button id='yourText' type="submit" class="post_options"  onclick="document.getElementById('id06').style.display='None'">delete</button>
+    </form>
+
+    </div>
+
+
+    
+<div id="modal" class= 'modal'>
+<app-add-post></app-add-post>
+</div>
+</body>
+
+<div class="footer">
+  <h5> 	&copy danish_angural</h5>
+</div>
+

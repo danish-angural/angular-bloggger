@@ -1,0 +1,96 @@
+<head>
+<title>Page Title</title>
+<meta charset="UTF-8">
+
+</head>
+<div class="header">
+  <h1>blogggger</h1>
+  <p>A <b></b> blog away</p>
+</div>
+
+<div class="navbar">
+  <a href="" class="active">Home</a>
+ <button class="right" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">login</button>
+ <div id="id01" class="modal">
+
+   <form class="modal-content animate" action="login" method="POST">
+     <div class="imgcontainer">
+       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+       <img src="img_avatar2.png" alt="Avatar" class="avatar">
+     </div>
+
+     <div class="container">
+       <label for="username"><b>Username</b></label>
+       <input id="username" type="text" placeholder="Enter Username" name="username" [(ngModel)] = "user.username"  required/>
+
+       <label for="password"><b>Password</b></label>
+       <input id= "password" type="password" placeholder="Enter Password" name="password" [(ngModel)]="user.password" required/>
+       <button type="submit" value="login" (click)="validateLogin()">login</button>
+       <div class="container" style="background-color:#f1f1f1">
+         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+         <button type="button" onclick="document.getElementById('id02').style.display='block'" class="cancelbtn">first time?</button>
+       </div>
+     </div>
+   </form>
+
+ </div>
+ <div id="id02" class="modal">
+   <form class="modal-content animate" action="register" method="POST">
+     <div class="imgcontainer">
+       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+     </div>
+
+     <div class="container">
+       <label for="first_name"><b>first name</b></label>
+       <input type="text" placeholder="Enter firstname" name="first_name" required>
+
+       <label for="last_name"><b>last name</b></label>
+       <input type="text" placeholder="Enter lastname" name="last_name" required>
+
+
+       <label for="username"><b>Username</b></label>
+       <input type="text" placeholder="Enter Username" name="username" required>
+
+       <label for="password1"><b>Password</b></label>
+       <input type="password" placeholder="Enter Password" name="password1" required>
+
+       <label for="password2"><b>confirmPassword</b></label>
+       <input type="password" placeholder="Enter Password again" name="password2" required>
+
+       <label for="emailid"><b>email id</b></label>
+       <input type="email" placeholder="enter email id" name="emailid" required>
+
+       <button type="submit">register</button>
+       <label>
+         <input type="checkbox" checked="unchecked" name="remember"> Remember me
+       </label>
+       <div class="container" style="background-color:#f1f1f1">
+         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+       </div>
+     </div>
+    </form>
+   </div>
+
+
+
+</div>
+
+<div class="row">
+  <div class="main">
+    <h2 onclick= "getElementById('id07').style.display='block'"></h2>
+    <div id='id07' class="modal" style="width: 100%; float: middle">
+    <div class="modal-content">
+
+    </div>
+    <div style="background-color:inherit; float:middle" class="imgcontainer" >
+      <span onclick="document.getElementById('id07').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+  </div>
+    <app-show-post></app-show-post>
+    </div>
+    <br>
+  </div>
+
+<div class="footer">
+  <h5> 	&copy danish_angural</h5>
+</div>
