@@ -2,11 +2,13 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ShowPostService } from './show-post.service';
 import { Post } from '../models/post.model';
 import { CommonService, } from '../service/common.service';
- 
+import {MatCardModule} from '@angular/material/card'
 @Component({
   selector: 'app-show-post',
   templateUrl: './show-post.component.html',
-  providers: [ ShowPostService ]
+  providers: [ ShowPostService ],
+  styleUrls: ['./show-post.component.css'],
+
 })
 export class ShowPostComponent implements OnInit {
  
@@ -24,6 +26,9 @@ export class ShowPostComponent implements OnInit {
     this.commonService.postAdded_Observable.subscribe(res => {
       this.getAllPost();
     });
+    this.commonService.refresh().subscribe(res=>{
+            this.getAllPost();
+    });
   }
  
   setDelete(post: Post){
@@ -37,7 +42,6 @@ export class ShowPostComponent implements OnInit {
  
   getAllPost(){
     this.showPostService.getAllPost().subscribe(result => {
-        console.log('result is ', result);
         this.posts = result['data'];
     });
   }
@@ -53,5 +57,4 @@ export class ShowPostComponent implements OnInit {
       this.getAllPost();
     })
   }
- 
 }

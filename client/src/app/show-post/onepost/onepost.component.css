@@ -1,0 +1,20 @@
+.example-card {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+  html{
+    background: radial-gradient(ellipse at top, #e66465, transparent),
+    radial-gradient(ellipse at bottom, #4d9f0c, transparent);
+  }
+  @media only screen and (max-width: 600px) {
+    .example-card {
+        max-width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  }

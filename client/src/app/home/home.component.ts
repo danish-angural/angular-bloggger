@@ -20,6 +20,7 @@ export class HomeComponent {
         this.commonService.postEdit_Observable.subscribe(res => {
             this.addBtn.nativeElement.click();
         });
+       
  
     }
  

@@ -14,12 +14,17 @@ export class CommonService {
 
 	notifyPostAddition(){
 		this.postAdded_Observable.next();
+		console.log('post added')
 	}
 
 	notifyPostEdit(){
 		this.postEdit_Observable.next();
+		console.log('post edited')
+
 	}
-	 
+	refresh(){
+		return this.postAdded_Observable.asObservable();
+	}
 	setPostToEdit(post: Post){
 		this.post_to_be_edited = post;
 		this.notifyPostEdit();

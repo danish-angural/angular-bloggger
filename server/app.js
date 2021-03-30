@@ -9,10 +9,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-app.get('/api/user/login', (req,res)=>{
-    console.log('reached app.get');
-    res.send('hello world')
-})
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
@@ -40,7 +37,7 @@ app.post('/api/user/login', (req, res) => {
     });
 })
 
-app.post('/api/post/getAllPost', (req, res) => {
+app.get('/api/post/getAllPost', (req, res) => {
 	mongoose.connect(url, { useMongoClient: true } , function(err){
 		if(err) throw err;
 		Post.find({},[], { sort: { _id: -1 } },(err, doc) => {
@@ -52,11 +49,20 @@ app.post('/api/post/getAllPost', (req, res) => {
 		})
 	});
 })
+app.get('/api/post/getPost', (req, res) => {
+    var id=req.query.id;
+	mongoose.connect(url, { useMongoClient: true } , function(err){
+		if(err) throw err;
+        Post.findById(id, function(err, result){
+            if(err)res.send(err);
+            else res.json(result);
+        })
+})
+})
 app.post('/api/post/createPost', (req, res) => {
-    console.log(req.body);
     mongoose.connect(url, { useMongoClient: true }, function(err){
         if(err) throw err;
-        const post = new Post({
+        const post = new Post({ 
             title: req.body.title,
             description: req.body.description,
             author: req.body.author,
@@ -87,11 +93,12 @@ app.post('/api/post/updatePost', (req, res) => {
 		})
 	});
 })
-app.post('/api/post/deletePost', (req, res) => {
+app.delete('/api/post/deletePost', (req, res) => {
+    var id=req.query.id;
     console.log(req.body);
     mongoose.connect(url, { useMongoClient: true }, function(err){
         if(err) throw err;
-        Post.findByIdAndRemove(req.body.id,
+        Post.findByIdAndRemove(id,
             (err, doc) => {
             if(err) throw err;
             return res.status(200).json({
@@ -100,6 +107,6 @@ app.post('/api/post/deletePost', (req, res) => {
             })
         })
     });
-})
+});
 
 app.listen(3000, ()=> console.log('blog running on port 3000'))

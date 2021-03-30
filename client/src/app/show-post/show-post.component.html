@@ -1,22 +1,23 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><div *ngFor="let post of posts" style="background-color: beige;">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<mat-card *ngFor="let post of posts" style="margin-top: 5%;">
     <div style="background-color: white;padding: 20px;margin-top: 20px;">
-        <h2>{{post.title}}</h2>
-        <h5>-{{post.author}}</h5>
-        <h5>{{post.date_created}}</h5>
+        <h2 [routerLink]="['/blog', post._id]">{{post.title}}</h2>
+        <h5 [routerLink]="['/blog', post._id]">-{{post.author}}</h5>
+        <h5 [routerLink]="['/blog', post._id]">{{post.date_created}}</h5>
         <div style="align-self: flex-end;">
         <h1 style="margin: 20px; font-size: larger;" class=" 	glyphicon glyphicon-edit" (click)="editPost(post)" onclick="document.getElementById('modal').style.display='block'"></h1>
         <h1 style="font-size: larger;" (click)="setDelete(post)" class="glyphicon glyphicon-trash" onclick="document.getElementById('deleteModal').style.display='block'"></h1>
       </div>
-        <div style="height:200px; background-color: beige; padding: 20px; border-radius: 5px;">{{post.description}}</div>
+        <div style="height:200px; background-color: beige; padding: 20px; border-radius: 5px; overflow: hidden;">{{post.description}}</div>
       </div>
-</div>
+</mat-card>
 <div  id="deleteModal" class="modal">
   <div style="position: relative; top: auto; left:500px; width:400px ;background-color: #f1f1f1; padding: 10px; border-radius: 10px;">
   <h1 style="color: grey;">Delete Post</h1>
   <h3>are you sure you want to delete?</h3>
   <button style="margin: 10px;" class="btn btn-primary btn-lgn" (click)="deletePost()" onclick="document.getElementById('deleteModal').style.display='none'">Delete</button>
   <button style="margin: 10px;" (click)="cancel()"   class="btn btn-primary btn-lgn" onclick="document.getElementById('deleteModal').style.display='None'">cancel</button>
-  </div>
+  </div> 
 </div>
 
 

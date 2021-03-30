@@ -1,0 +1,18 @@
+<html>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>
+            {{post.title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+            -{{post.author}} at {{post.date_created}}
+        </mat-card-subtitle>
+    </mat-card-header> 
+    <img mat-card-image src={{img}} class='example-header-image'>
+        <mat-card-content>
+                <p *ngFor="let line of lines">
+                    {{line}}
+                </p>
+        </mat-card-content>
+</mat-card>
+</html>

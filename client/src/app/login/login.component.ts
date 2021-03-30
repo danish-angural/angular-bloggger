@@ -21,7 +21,7 @@ export class LoginComponent {
   	if(this.user.username && this.user.password) {
   		this.loginService.validateLogin(this.user).subscribe(result => {
         if(result['status'] === 'success') {
-          localStorage.setItem('loggedInUser', this.user.username)
+          localStorage.setItem('loggedInUser', result['data']['_id'])
           this.router.navigate(['/home']);
           console.log(result);
         } else {

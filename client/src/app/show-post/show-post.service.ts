@@ -10,10 +10,14 @@ export class ShowPostService {
     }
      
     getAllPost(){
-        return this.http.post('/api/post/getAllPost',{})
+        return this.http.get('/api/post/getAllPost',{})
     }
  
     deletePost(id){
-        return this.http.post('/api/post/deletePost',{id : id})
+        return this.http.delete('/api/post/deletePost/', {params: {'id': id}})
+    }
+    getOnePost(id){
+        console.log(id);
+        return this.http.get('/api/post/getPost/', {params: {'id': id}})
     }
 }

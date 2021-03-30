@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <head>
 <title>bloggger</title>
 <meta charset="UTF-8">
@@ -6,19 +6,17 @@
 <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
+<body [ngStyle]='{opacity: 1}' *ngIf="username">
 
-<body>
+<div class="header">
 
-<div class="header" style="background-image:url('background.webp '); background-repeat: no-repeat;background-size: cover;">
-
-  <h1>bloggger</h1>
+  <h1>BLOGGGER</h1>
   <p>welcome {{username}}</p>
 </div>
-
 <div class="navbar">
   <button href="" class="btn btn-primary btn-lg">Home</button>
   <button #addPost type="button" class="btn btn-primary btn-lg" onclick="document.getElementById('modal').style.display='block'">add blog</button>
-  <button class="btn btn-primary btn-lg" href="">Logout</button>
+  <button class="btn btn-primary btn-lg" href="logout()">Logout</button>
   <div class="dropdown">
    <button class="btn btn-primary btn-lg">profile options
      <i class="fa fa-caret-down"></i>

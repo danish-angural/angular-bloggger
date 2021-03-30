@@ -135,15 +135,19 @@ img.avatar {
 /* Style the body */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+  margin: auto;
+  overflow-x: hidden;
+
 }
 
 /* Header/logo Title */
 .header {
-  font-family: cursive ;
+  font-family:cursive ;
   padding: 80px;
   text-align: center;
-  background: #1abc9c;
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgifimage.net%2Fwp-content%2Fuploads%2F2018%2F06%2Ftwinkling-stars-gif-8.gif&f=1&nofb=1');
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
 
 }
@@ -154,8 +158,8 @@ body {
 
 /* Increase the font size of the heading */
 .header h1 {
-  font-size: 40px;
-  font-family:monospace;
+  font-size: 50px;
+  font-family:cursive;
 }
 
 /* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */

@@ -4,24 +4,24 @@ import { AddPostService } from './add-post.service';
 import { Post } from '../models/post.model';
 import { Router } from '@angular/router';
 import { CommonService } from '../service/common.service';
-
+import { ShowPostService } from '../show-post/show-post.service';
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
   styleUrls: ['./add-post.component.css'],
-  providers: [ AddPostService ]
+  providers: [ AddPostService, ShowPostService ]
 })
 export class AddPostComponent {
 
   @ViewChild('closeBtn') closeBtn: ElementRef;
   public post : Post;
-  constructor(private addPostService: AddPostService, private router: Router, private commonService: CommonService) {
+  public present_posts: number;
+  constructor(private addPostService: AddPostService, private router: Router, private commonService: CommonService, private showpostservice: ShowPostService) {
     this.post = new Post();
   }
-
   addPost() {
   	if(this.post.title && this.post.description){
-      if(this.post.id){
+      if(this.post._id){
         this.post.author=localStorage.getItem('loggedInUser');
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
@@ -30,7 +30,6 @@ export class AddPostComponent {
 
         var date = mm + '/' + dd + '/' + yyyy;
         this.post.date_created=date;
-        console.log(this.post);
         this.addPostService.updatePost(this.post).subscribe(res =>{
         this.commonService.notifyPostAddition();
         });
@@ -46,9 +45,10 @@ export class AddPostComponent {
         this.post.date_created=date;
         console.log(this.post);
   		this.addPostService.addPost(this.post).subscribe(res =>{
-  			this.closeBtn.nativeElement.click();
+        this.commonService.notifyPostAddition();
       });
     }
+    this.post=new Post();
   	} else {
   		alert('Title and Description required');
   	}
