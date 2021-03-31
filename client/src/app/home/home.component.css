@@ -219,11 +219,9 @@ body {
   max-width: 100%;
   background-color: #aaa;
   width: auto;
-  height: 200px;
+  max-height: 100%;
   padding: 20px;
   font-family: sans-serif;
-  overflow-y:scroll;
-  overflow-x:scroll;
 }
 
 /* Footer */

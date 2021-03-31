@@ -1,22 +1,23 @@
+<html>
 <head>
 <title>Page Title</title>
 <meta charset="UTF-8">
 
 </head>
+<body>
 <div class="header">
   <h1>blogggger</h1>
-  <p>A <b></b> blog away</p>
+  <p>A <b>blog away</b> </p>
 </div>
 
 <div class="navbar">
-  <a href="" class="active">Home</a>
- <button class="right" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">login</button>
+ <button mat-button class="right" onclick="document.getElementById('id01').style.display='block'" style="width:auto; border-radius: 5px;">login</button>
  <div id="id01" class="modal">
 
    <form class="modal-content animate" action="login" method="POST">
      <div class="imgcontainer">
        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-       <img src="assets/img_avatar2.png" alt="Avatar" class="avatar">
+       <img src="assets/avatar.jpeg" alt="Avatar" class="avatar">
      </div>
 
      <div class="container">
@@ -25,10 +26,10 @@
 
        <label for="password"><b>Password</b></label>
        <input id= "password" type="password" placeholder="Enter Password" name="password" [(ngModel)]="user.password" required/>
-       <button type="submit" value="login" (click)="validateLogin()">login</button>
-       <div class="container" style="background-color:#f1f1f1">
-         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-         <button type="button" onclick="document.getElementById('id02').style.display='block'" class="cancelbtn">first time?</button>
+       <button style="width: 50%; margin-left: 25%; border-radius: 5px;" mat-button type="submit" value="login" (click)="validateLogin()">login</button>
+       <div class="container" style="background-color:#f1f1f1; width: 100%; margin-top: 10%;">
+         <button style="width: 50%; margin-left: 25%; border-radius: 5px;"mat-button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+         <button style="width: 50%; margin-left: 25%; border-radius: 5px;"mat-button type="button" onclick="document.getElementById('id02').style.display='block'" class="cancelbtn">first time?</button>
        </div>
      </div>
    </form>
@@ -38,7 +39,8 @@
    <form class="modal-content animate" action="register" method="POST">
      <div class="imgcontainer">
        <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-     </div>
+       <img src="assets/avatar.jpeg" alt="Avatar" class="avatar">
+      </div>
 
      <div class="container">
        <label for="first_name"><b>first name</b></label>
@@ -49,10 +51,10 @@
 
 
        <label for="username"><b>Username</b></label>
-       <input type="text" placeholder="Enter Username" name="username" required>
+       <input type="text" placeholder="Enter Username" name="username" required [(ngModel)]="user.username">
 
        <label for="password1"><b>Password</b></label>
-       <input type="password" placeholder="Enter Password" name="password1" required>
+       <input type="password" placeholder="Enter Password" name="password1" required [(ngModel)]="user.password">
 
        <label for="password2"><b>confirmPassword</b></label>
        <input type="password" placeholder="Enter Password again" name="password2" required>
@@ -60,12 +62,12 @@
        <label for="emailid"><b>email id</b></label>
        <input type="email" placeholder="enter email id" name="emailid" required>
 
-       <button type="submit">register</button>
+       <button mat-button type="submit" (click)="register()">register</button>
        <label>
          <input type="checkbox" checked="unchecked" name="remember"> Remember me
        </label>
        <div class="container" style="background-color:#f1f1f1">
-         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+         <button mat-button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
        </div>
      </div>
     </form>
@@ -92,5 +94,7 @@
   </div>
 
 <div class="footer">
-  <h5> 	&copy danish_angural</h5>
+  <h5> 	&#169; danish_angural</h5>
 </div>
+</body>
+</html>

@@ -20,4 +20,8 @@ export class ShowPostService {
         console.log(id);
         return this.http.get('/api/post/getPost/', {params: {'id': id}})
     }
+    getMyPosts(username){
+        console.log(username);
+        return this.http.get('/api/post/getMyPosts/', {params: {'username': username}})
+    }
 }

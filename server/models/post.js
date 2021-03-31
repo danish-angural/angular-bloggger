@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  date_created: {type: Date, required: true},
+  date_created: {type: String, required: true},
   author: {type: String, required: true}
 }, { collection : 'post' });
  

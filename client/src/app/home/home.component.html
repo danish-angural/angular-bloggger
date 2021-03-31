@@ -14,9 +14,8 @@
   <p>welcome {{username}}</p>
 </div>
 <div class="navbar">
-  <button href="" class="btn btn-primary btn-lg">Home</button>
-  <button #addPost type="button" class="btn btn-primary btn-lg" onclick="document.getElementById('modal').style.display='block'">add blog</button>
-  <button class="btn btn-primary btn-lg" href="logout()">Logout</button>
+  <button mat-button #addPost type="button" class="btn btn-primary btn-lg" onclick="document.getElementById('modal').style.display='block'">add blog</button>
+  <button class="btn btn-primary btn-lg" (click)="logout()">Logout</button>
   <div class="dropdown">
    <button class="btn btn-primary btn-lg">profile options
      <i class="fa fa-caret-down"></i>
@@ -27,12 +26,10 @@
 <div class="side">
   <h2></h2>
   <h5>Photo of me:</h5>
-  <img src="" alt="you" width="240px">
-  <p>joined on </p>
-  <h3>@ </h3>
-  <div class="fakeimg" style="height:60px;">
-    <a href=''></a>
-    <h6></h6>
+  <img src="../../assets/avatar.png" alt="you" width="240px">
+  <h3>@ {{username}}</h3>
+  <div class="fakeimg">
+    <h6 [routerLink]="['/blog', post._id]" *ngFor="let post of myposts"> >{{post.title}}</h6><br>
   </div>
 </div>
 
@@ -94,6 +91,6 @@
 </body>
 
 <div class="footer">
-  <h5> 	&copy danish_angural</h5>
+  <h5> 	&#169; danish_angural</h5>
 </div>
 

@@ -15,5 +15,12 @@ export class LoginService {
             password : user.password
         })
     }
+    register(user: User){
+        return this.http.post('/api/user/register',{
+            username : user.username,
+            password : user.password
+        })
+    }
+
  
 }

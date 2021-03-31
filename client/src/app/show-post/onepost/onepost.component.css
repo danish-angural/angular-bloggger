@@ -2,19 +2,33 @@
     max-width: 50%;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    top: 5%;
   }
   
   .example-header-image {
     background-size: cover;
   }
   html{
-    background: radial-gradient(ellipse at top, #e66465, transparent),
-    radial-gradient(ellipse at bottom, #4d9f0c, transparent);
+    background: radial-gradient(ellipse at top, #282828, white),
+    radial-gradient(ellipse at bottom, white, #282828) ;
+    height:100vh;
+    background-size: 100%;
+    padding: 0%;
+    top: 0;
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+  body{
+    min-height: 100vh;
+    height: fit-content;
+    padding: 0;
   }
   @media only screen and (max-width: 600px) {
     .example-card {
         max-width: 95%;
         margin-left: auto;
         margin-right: auto;
+        top: 0;
       }
   }

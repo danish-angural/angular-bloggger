@@ -15,9 +15,11 @@ export class ShowPostComponent implements OnInit {
   @ViewChild('closeBtn') closeBtn: ElementRef;
   public posts : any [];
   public post_to_delete;
- 
+  username;
   constructor(private showPostService: ShowPostService, private commonService: CommonService) {
-       
+    this.username=localStorage.getItem('loggedInUser');
+    console.log("username=",localStorage);
+    
   }
  
   ngOnInit(){
@@ -56,5 +58,8 @@ export class ShowPostComponent implements OnInit {
     this.showPostService.deletePost(this.post_to_delete._id).subscribe(res => {
       this.getAllPost();
     })
+  }
+  ShowMyPosts(){
+    this.showPostService.getMyPosts(this.username);
   }
 }

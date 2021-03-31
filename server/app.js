@@ -36,6 +36,21 @@ app.post('/api/user/login', (req, res) => {
         })
     });
 })
+app.post('/api/user/register', (req, res) => {
+    
+    mongoose.connect(url, function(err){
+        if(err) throw err;
+       User.exists({username: req.body.username}, function(err, result){
+           if(err) console.log(err);
+           if(result) res.json({status: 'failiure', message: 'exists'})
+           else User.create({username: req.body.username, password: req.body.password}, function(err, result){
+            console.log(result)   
+            if(err) throw err;
+               else res.json({status: 'success', data: result})
+           })
+       })
+    });
+})
 
 app.get('/api/post/getAllPost', (req, res) => {
 	mongoose.connect(url, { useMongoClient: true } , function(err){
@@ -47,6 +62,17 @@ app.get('/api/post/getAllPost', (req, res) => {
 				data: doc
 			})
 		})
+	});
+})
+app.get('/api/post/getMyPosts', (req, res) => {
+    var usernam=req.query.username;
+    console.log(usernam)
+	mongoose.connect(url, { useMongoClient: true } , function(err){
+		if(err) throw err;
+		Post.find({author: usernam}, function(err, result){
+            if(err) res.send(err);
+            else res.json(result);
+        })
 	});
 })
 app.get('/api/post/getPost', (req, res) => {
@@ -81,7 +107,7 @@ app.post('/api/post/updatePost', (req, res) => {
 	mongoose.connect(url, { useMongoClient: true }, function(err){
 		if(err) throw err;
 		Post.findByIdAndUpdate(
-			{id: req.body.id },
+			{_id: req.body.id },
             { title : req.body.title, description: req.body.description },
             {new: true},
 			(err, doc) => {

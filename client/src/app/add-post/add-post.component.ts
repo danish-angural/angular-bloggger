@@ -23,26 +23,28 @@ export class AddPostComponent {
   	if(this.post.title && this.post.description){
       if(this.post._id){
         this.post.author=localStorage.getItem('loggedInUser');
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-
-        var date = mm + '/' + dd + '/' + yyyy;
-        this.post.date_created=date;
+        var date = (new Date());
+        var dated = date.getDate()+
+        "/"+(date.getMonth()+1)+
+        "/"+date.getFullYear()+
+        " "+date.getHours()+
+        ":"+date.getMinutes()+
+        ":"+date.getSeconds()
+        this.post.date_created=dated;
         this.addPostService.updatePost(this.post).subscribe(res =>{
         this.commonService.notifyPostAddition();
         });
       }
       else{
         this.post.author=localStorage.getItem('loggedInUser');
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-
-        var date = mm + '/' + dd + '/' + yyyy;
-        this.post.date_created=date;
+        var date = (new Date());
+        var dated = date.getDate()+
+        "/"+(date.getMonth()+1)+
+        "/"+date.getFullYear()+
+        " "+date.getHours()+
+        ":"+date.getMinutes()+
+        ":"+date.getSeconds()
+        this.post.date_created=dated;
         console.log(this.post);
   		this.addPostService.addPost(this.post).subscribe(res =>{
         this.commonService.notifyPostAddition();
